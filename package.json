@@ -40,5 +40,6 @@
     "prettier": "^3.5.3",
     "typescript": "^5.7.2",
     "vite": "^7.1.7"
-  }
+  },
+  "packageManager": "pnpm@10.18.2"
 }
