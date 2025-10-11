@@ -1,6 +1,10 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import {
+  RouterProvider,
+  createRouter,
+  createHashHistory,
+} from '@tanstack/react-router'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
 
@@ -17,6 +21,7 @@ const router = createRouter({
   context: {
     ...TanStackQueryProviderContext,
   },
+  history: createHashHistory(),
   defaultPreload: 'intent',
   scrollRestoration: true,
   defaultStructuralSharing: true,

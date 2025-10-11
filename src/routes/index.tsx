@@ -240,6 +240,7 @@ function CallbackExample() {
   const [count, setCount] = useState(0)
 
   // This function is recreated on every render
+  // @ts-expect-error - This method is intentionally not used
   function regularFunction() {
     console.log('Regular function called')
   }
