@@ -89,7 +89,7 @@ function RouteComponent() {
       {/* Todo Query Demo */}
       <div>
         <h1 className="text-3xl">Todo Query Demo</h1>
-        <ul className="*:list-disc *:ml-5">
+        <ul>
           <li>
             <a
               href="https://tanstack.com/query/v5/docs/framework/react/guides/suspense"

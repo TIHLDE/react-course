@@ -30,18 +30,18 @@ export function RawListRenderingDemo() {
 
   return (
     <>
-      <div>
-        <ul>{'Hello World'}</ul>
-        <ul>{0}</ul>
-        <ul>{true}</ul>
-        <ul>{false}</ul>
-        <ul>{['Hello', 'World']}</ul>
-        <ul>{null}</ul>
-        <ul>{undefined}</ul>
-        <ul>{functionThatReturnsValue()}</ul>
+      <div className="space-y-2">
+        <p>{'Hello World'}</p>
+        <p>{0}</p>
+        <p>{true}</p>
+        <p>{false}</p>
+        <p>{null}</p>
+        <p>{undefined}</p>
+        <p>{['Hello', 'World']}</p>
+        <p>{functionThatReturnsValue()}</p>
       </div>
 
-      <div>
+      <div className="mt-5">
         <ul>{elementItems}</ul>
       </div>
     </>

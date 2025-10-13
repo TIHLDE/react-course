@@ -143,4 +143,8 @@ code {
   a {
     @apply text-blue-600 underline;
   }
+
+  ul > li {
+    @apply list-disc ml-5;
+  }
 }

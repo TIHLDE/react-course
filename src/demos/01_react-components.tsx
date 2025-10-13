@@ -6,9 +6,9 @@ export function BasicComponent() {
     <div>
       <h1>Basic Component</h1>
       <ul>
-        <li className="ml-5 list-disc">Item 1</li>
-        <li className="ml-5 list-disc">Item 2</li>
-        <li className="ml-5 list-disc">Item 3</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
       </ul>
     </div>
   )
