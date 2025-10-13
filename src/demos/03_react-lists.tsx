@@ -56,7 +56,7 @@ const values = ['Apple', 'Banana', 'Orange', 'Peach', 'Pear']
 // #region Importance of key prop random
 
 export function ImportanceOfKeyPropRandom() {
-  const [toggleFirst, setToggleFirst] = useState(false)
+  const [toggleFirst, setToggleFirst] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -94,7 +94,7 @@ export function ImportanceOfKeyPropRandom() {
 
 // #region Importance of key prop index
 export function ImportanceOfKeyPropIndex() {
-  const [toggleFirst, setToggleFirst] = useState(false)
+  const [toggleFirst, setToggleFirst] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -132,7 +132,7 @@ export function ImportanceOfKeyPropIndex() {
 
 // #region Importance of key prop value
 export function ImportanceOfKeyPropValue() {
-  const [toggleFirst, setToggleFirst] = useState(false)
+  const [toggleFirst, setToggleFirst] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
