@@ -51,7 +51,8 @@ interface PropsExampleProps {
   description: string
   count?: number
 }
-
+//                                          Count has a default value of 0
+//                                          if nothing is passed
 function PropsExample({ title, description, count = 0 }: PropsExampleProps) {
   return (
     <div className="p-4 bg-green-50 rounded-lg">
@@ -1017,7 +1018,7 @@ function ConceptRenderer({
             <DialogTrigger asChild>
               <Button>View Source</Button>
             </DialogTrigger>
-            <DialogContent className="max-w-[calc(100vw_-_2%)]! w-fit">
+            <DialogContent className="max-w-[calc(100vw_-_5%)]! md:max-w-[calc(100vw_-_20%)]! w-full">
               <DialogHeader>
                 <DialogTitle>Source Code: {title}</DialogTitle>
                 <DialogDescription>
@@ -1026,7 +1027,7 @@ function ConceptRenderer({
               </DialogHeader>
               <div className="max-h-[70vh] overflow-y-auto rounded-md">
                 <ShikiHighlighter
-                  className="w-fit"
+                  className="w-full"
                   language="tsx"
                   theme="github-dark"
                   showLineNumbers
@@ -1047,11 +1048,11 @@ function MainPage() {
     <div className="max-w-6xl mx-auto p-6">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          React Concepts Guide
+          React Concepts Guide/Cheatsheet
         </h1>
         <p className="text-lg text-gray-600">
-          A comprehensive guide to React concepts from basic to intermediate
-          level, with interactive examples and explanations.
+          A comprehensive guide to React concepts from basic to advanced level,
+          with interactive examples and explanations.
         </p>
       </div>
 
