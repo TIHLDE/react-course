@@ -1,10 +1,10 @@
-import {
-  EventsQueryDemo,
-  sourceCode,
-  TodoQueryDemo,
-} from '@/demos/04_tanstack-query'
 import { createFileRoute } from '@tanstack/react-router'
 import ShikiHighlighter from 'react-shiki'
+import {
+  EventsQueryDemo,
+  TodoQueryDemo,
+  sourceCode,
+} from '@/demos/04_tanstack-query'
 
 export const Route = createFileRoute('/04')({
   component: RouteComponent,

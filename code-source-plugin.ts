@@ -1,5 +1,5 @@
-import type { Plugin } from 'vite'
 import path from 'node:path'
+import type { Plugin } from 'vite'
 
 const node_modules_path = path.resolve(__dirname, 'node_modules')
 

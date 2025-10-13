@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
+import ShikiHighlighter from 'react-shiki'
 import {
   BasicComponent,
   ComponentPropsDemo,
   FragmentComponent,
   sourceCode,
 } from '@/demos/01_react-components'
-import ShikiHighlighter from 'react-shiki'
 
 export const Route = createFileRoute('/01')({
   component: RouteComponent,

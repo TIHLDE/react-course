@@ -1,4 +1,23 @@
-import { Button } from '@/components/ui/button'
+import { createFileRoute } from '@tanstack/react-router'
+import React, {
+  Suspense,
+  createContext,
+  memo,
+  use,
+  useCallback,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import ShikiHighlighter from 'react-shiki'
+import type { FallbackProps } from 'react-error-boundary'
+import { cn } from '@/lib/utils'
 import {
   Dialog,
   DialogContent,
@@ -7,25 +26,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { cn } from '@/lib/utils'
-import { createFileRoute } from '@tanstack/react-router'
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
-  createContext,
-  useCallback,
-  useMemo,
-  memo,
-  Suspense,
-  useReducer,
-  useLayoutEffect,
-  useImperativeHandle,
-  use,
-} from 'react'
-import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
-import ShikiHighlighter from 'react-shiki'
+import { Button } from '@/components/ui/button'
 
 export const Route = createFileRoute('/')({
   component: MainPage,

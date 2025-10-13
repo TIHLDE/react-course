@@ -1,3 +1,6 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
+import ShikiHighlighter from 'react-shiki'
 import {
   ImportanceOfKeyPropIndex,
   ImportanceOfKeyPropRandom,
@@ -6,9 +9,6 @@ import {
   RawListRenderingDemo,
   sourceCode,
 } from '@/demos/03_react-lists'
-import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
-import ShikiHighlighter from 'react-shiki'
 
 export const Route = createFileRoute('/03')({
   component: RouteComponent,

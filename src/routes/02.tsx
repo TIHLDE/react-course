@@ -1,12 +1,12 @@
+import { createFileRoute } from '@tanstack/react-router'
+import ShikiHighlighter from 'react-shiki'
 import {
   EffectHook,
   MemoHook,
   RefHook,
-  sourceCode,
   StateHook,
+  sourceCode,
 } from '@/demos/02_react-hooks'
-import { createFileRoute } from '@tanstack/react-router'
-import ShikiHighlighter from 'react-shiki'
 
 export const Route = createFileRoute('/02')({
   component: RouteComponent,
