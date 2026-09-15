@@ -1,0 +1,78 @@
+/* Small, predictable baseline for the demo. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.demo-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.demo-preview {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+.code-preview {
+  min-width: 0;
+  border-radius: 6px;
+  overflow: scroll
+}
+
+@media (max-width: 800px) {
+  .demo-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.html-code pre {
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+  counter-reset: line;
+}
+
+.html-code .line {
+  counter-increment: line;
+}
+
+.html-code .line::before {
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  color: #6a737d;
+  text-align: right;
+  content: counter(line);
+  user-select: none;
+}
