@@ -4,10 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "build": "tsc -b && vp build",
-    "lint": "vp lint",
-    "preview": "vp preview"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "prettier": "^3.9.6",
@@ -19,16 +18,8 @@
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
-    "@vitejs/plugin-react": "^6.1.1",
+    "@vitejs/plugin-react": "5.1.4",
     "typescript": "~6.0.2",
-    "vite": "catalog:",
-    "vite-plus": "catalog:"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "10.18.2",
-      "onFail": "download"
-    }
+    "vite": "7.3.6"
   }
 }
