@@ -33,19 +33,26 @@ async function toggleCompleted(id: number) {
 }
 // #endregion
 
-// #region Event Query Options
-const eventsQueryOptions = () =>
+// #region Show Query Options
+const showsQueryOptions = () =>
   queryOptions({
-    queryKey: ['events'],
-    queryFn: () =>
-      fetch('https://api.tihlde.org/events').then((res) => res.json()),
+    queryKey: ['shows'],
+    queryFn: async () => {
+      const response = await fetch('https://api.tvmaze.com/shows?page=0')
+      if (!response.ok) throw new Error('Failed to fetch shows')
+      const shows = (await response.json()) as Show[]
+      return shows.sort((a, b) => b.weight - a.weight)
+    },
   })
 
-const eventQueryOptions = (id: string) =>
+const showQueryOptions = (id: number) =>
   queryOptions({
-    queryKey: ['event', id],
-    queryFn: () =>
-      fetch(`https://api.tihlde.org/events/${id}`).then((res) => res.json()),
+    queryKey: ['show', id],
+    queryFn: async () => {
+      const response = await fetch(`https://api.tvmaze.com/shows/${id}`)
+      if (!response.ok) throw new Error('Failed to fetch show')
+      return response.json() as Promise<Show>
+    },
   })
 // #endregion
 
@@ -67,51 +74,65 @@ function useTodoMutation() {
 }
 // #endregion
 
-// #region Events Query Demo
-export function EventsQueryDemo() {
-  const [selectedEventId, setSelectedEventId] = useState<string | null>(null)
+// #region Shows Query Demo
+export function ShowsQueryDemo() {
+  const [selectedShowId, setSelectedShowId] = useState<number | null>(null)
   return (
     <div>
-      <h1>Events</h1>
+      <h1>TV Shows</h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <EventsList showInfo={setSelectedEventId} />
+        <ShowsList showInfo={setSelectedShowId} />
       </Suspense>
 
       <div className="p-5 border-2 border-border">
         <Suspense fallback={<div>Loading...</div>}>
-          {selectedEventId && <EventInfo id={selectedEventId} />}
+          {selectedShowId && <ShowInfo id={selectedShowId} />}
         </Suspense>
       </div>
     </div>
   )
 }
 
-function EventsList({ showInfo }: { showInfo: (id: string) => void }) {
-  const { data } = useSuspenseQuery(eventsQueryOptions())
+function ShowsList({ showInfo }: { showInfo: (id: number) => void }) {
+  const { data } = useSuspenseQuery(showsQueryOptions())
   return (
     <>
-      {data.results.slice(0, 10).map((event: any) => (
-        <li key={event.id}>
-          <button onClick={() => showInfo(event.id)}>Show Info</button>
-          {event.title}
+      {data.slice(0, 10).map((show) => (
+        <li key={show.id}>
+          <button onClick={() => showInfo(show.id)}>Show Info</button>
+          {show.name}
         </li>
       ))}
     </>
   )
 }
 
-function EventInfo({ id }: { id: string }) {
-  const { data } = useSuspenseQuery(eventQueryOptions(id))
+function ShowInfo({ id }: { id: number }) {
+  const { data } = useSuspenseQuery(showQueryOptions(id))
 
   return (
     <div>
-      <h1>{data.title}</h1>
-      <p>{data.description.substring(0, 100)}...</p>
-      <img src={data.image} alt={data.image_alt} />
+      <h1>{data.name}</h1>
+      <p>
+        {data.summary?.replace(/<[^>]*>/g, '').substring(0, 100) ??
+          'No summary available.'}
+        ...
+      </p>
+      {data.image?.medium && <img src={data.image.medium} alt={data.name} />}
     </div>
   )
 }
 // #endregion
+
+type Show = {
+  id: number
+  name: string
+  weight: number
+  summary: string | null
+  image: {
+    medium: string
+  } | null
+}
 
 type Todo = (typeof fakeTodos)[number]
 
@@ -159,16 +180,16 @@ function TodoItem({ todo }: { todo: Todo }) {
 // #endregion
 
 const todoFakeAPISource = '' /* code-source: Todo Fake API */
-const eventsQueryOptionsSource = '' /* code-source: Event Query Options */
+const showsQueryOptionsSource = '' /* code-source: Show Query Options */
 const todoQueryOptionsSource = '' /* code-source: Todo Query Options */
 
-const eventsQueryDemoSource = '' /* code-source: Events Query Demo */
+const showsQueryDemoSource = '' /* code-source: Shows Query Demo */
 const todoQueryDemoSource = '' /* code-source: Todo Query Demo */
 
 export const sourceCode = {
   todoFakeAPISource,
-  eventsQueryOptionsSource,
+  showsQueryOptionsSource,
   todoQueryOptionsSource,
-  eventsQueryDemoSource,
+  showsQueryDemoSource,
   todoQueryDemoSource,
 }

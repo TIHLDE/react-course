@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { CatchBoundary, createFileRoute } from '@tanstack/react-router'
 import ShikiHighlighter from 'react-shiki'
 import {
-  EventsQueryDemo,
+  ShowsQueryDemo,
   TodoQueryDemo,
   sourceCode,
 } from '@/demos/04_tanstack-query'
@@ -9,6 +9,14 @@ import {
 export const Route = createFileRoute('/04')({
   component: RouteComponent,
 })
+
+function ShowsQueryError() {
+  return (
+    <div role="alert">
+      Could not load the TVMaze demo. Please try again later.
+    </div>
+  )
+}
 
 function RouteComponent() {
   return (
@@ -41,13 +49,13 @@ function RouteComponent() {
           showLineNumbers
           className="h-full *:h-full"
         >
-          {sourceCode.eventsQueryOptionsSource}
+          {sourceCode.showsQueryOptionsSource}
         </ShikiHighlighter>
       </div>
 
-      {/* Events Query Demo */}
+      {/* TVMaze Query Demo */}
       <div>
-        <h1 className="text-3xl">Events Query Demo</h1>
+        <h1 className="text-3xl">TVMaze Query Demo</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
           <ShikiHighlighter
             language="tsx"
@@ -55,10 +63,15 @@ function RouteComponent() {
             showLineNumbers
             className="h-full *:h-full"
           >
-            {sourceCode.eventsQueryDemoSource}
+            {sourceCode.showsQueryDemoSource}
           </ShikiHighlighter>
           <div className="p-5 border-4 min-h-100 border-black border-dashed">
-            <EventsQueryDemo />
+            <CatchBoundary
+              getResetKey={() => 'shows-query-demo'}
+              errorComponent={ShowsQueryError}
+            >
+              <ShowsQueryDemo />
+            </CatchBoundary>
           </div>
         </div>
       </div>
